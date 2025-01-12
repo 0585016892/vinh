@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vinh lì xì</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Thêm thẻ <audio> để phát nhạc Tết tự động -->
+    <audio id="tet-music" autoplay loop>
+        <source src="./nhac.mp3" type="audio/mp3">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div class="game-container">
+        <div class="red-envelope">
+            <img src="./img/12.jpg" alt="Bao lì xì" id="envelope-img">
+        </div>
+        <button id="draw-btn">Bốc lì xì</button>
+        <div id="result" class="result"></div>
+        <div class="money" id="money"></div> <!-- Tờ tiền -->
+    </div>
+
+    <script src="/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,103 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-image: url('./img/1.webp');
+background-repeat: no-repeat;  /* Ảnh nền không lặp lại */
+background-size: cover;  /* Ảnh nền sẽ phủ đầy phần tử */
+background-position: center;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.game-container {
+    text-align: center;
+    background-color: transparent;
+    position: relative;
+}
+
+.red-envelope {
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 1; /* Bao lì xì nằm trên tờ tiền */
+}
+
+#envelope-img {
+    width: 50%;
+    height: 50%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #f7f3f3;
+    color: rgb(224, 23, 23);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #c4c0c0;
+}
+
+.result {
+    margin-top: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+}
+
+.money {
+    display: none;
+    position: absolute;
+    top: 25%; /* Đặt tờ tiền dưới bao lì xì */
+    left: 50%;
+    transform: translateX(-50%) rotate(90deg); /* Quay tờ tiền 90 độ */
+    width: 100px;
+    height: 50px;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    pointer-events: none; /* Không gây cản trở các sự kiện chuột */
+    transition: top 2s ease, opacity 2s ease, transform 2s ease; /* Thêm hiệu ứng di chuyển, độ mờ và xoay */
+}
+
+/* Tạo hiệu ứng di chuyển tờ tiền */
+.money.down {
+    top: 25%; /* Đưa tờ tiền xuống dưới bao lì xì */
+    opacity: 0;
+}
+
+.money.up {
+    top: 0%;  /* Di chuyển tờ tiền lên */
+    opacity: 1;
+    transform: translateX(-50%) rotate(90deg); /* Quay dọc tờ tiền */
+}
+
+/* Hiệu ứng "lắc" bao lì xì */
+@keyframes shake {
+    0% { transform: rotate(0); }
+    25% { transform: rotate(-5deg); }
+    50% { transform: rotate(5deg); }
+    75% { transform: rotate(-5deg); }
+    100% { transform: rotate(0); }
+}
+
+.shake {
+    animation: shake 0.5s ease forwards;
+}
+@media (max-width: 768px) {
+    body {
+        background-image: url('./img/dt3.jpg'); /* Thay đổi hình nền cho thiết bị di động */
+    }
+}
