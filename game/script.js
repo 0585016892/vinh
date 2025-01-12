@@ -5,18 +5,33 @@ document.getElementById('draw-btn').addEventListener('click', function() {
             console.log('Không thể phát nhạc: ', error);
         });
     }
-    const amounts = [5000, 10000, 20000, 50000, 100000]; // Các mệnh giá tiền
+
+    // Các mệnh giá tiền
+    const amounts = [5000, 10000, 20000, 50000, 100000]; 
     const images = [
         "./img/5k.jpg", // Thay bằng đường dẫn hình ảnh tờ tiền 5k VND
         "./img/10k.jpg", // Thay bằng đường dẫn hình ảnh tờ tiền 10k VND
         "./img/20k.jpg", // Thay bằng đường dẫn hình ảnh tờ tiền 20k VND
         "./img/50k.webp", // Thay bằng đường dẫn hình ảnh tờ tiền 50k VND
-        "./img/100k.jpg", // Thay bằng đường dẫn hình ảnh tờ tiền 50k VND
+        "./img/100k.jpg", // Thay bằng đường dẫn hình ảnh tờ tiền 100k VND
     ];
 
-    const randomAmountIndex = Math.floor(Math.random() * amounts.length);
-    const randomImage = images[randomAmountIndex];
-    const randomAmount = amounts[randomAmountIndex];
+    // Tạo xác suất cho mỗi mệnh giá, tỉ lệ xuất hiện thấp cho tờ 100k
+    const weightedAmounts = [
+        5000, 5000, 10000, 10000, 20000, 20000, 50000, 50000, 50000, 100000
+    ];
+    const weightedImages = [
+        "./img/5k.jpg", "./img/5k.jpg", 
+        "./img/10k.jpg", "./img/10k.jpg", 
+        "./img/20k.jpg", "./img/20k.jpg", 
+        "./img/50k.webp", "./img/50k.webp", "./img/50k.webp", 
+        "./img/100k.jpg"
+    ];
+
+    // Chọn ngẫu nhiên một phần tử trong mảng có xác suất được điều chỉnh
+    const randomIndex = Math.floor(Math.random() * weightedAmounts.length);
+    const randomAmount = weightedAmounts[randomIndex];
+    const randomImage = weightedImages[randomIndex];
 
     const moneyDiv = document.getElementById('money');
     const resultDiv = document.getElementById('result');
